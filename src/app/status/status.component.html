@@ -10,17 +10,20 @@
             <thead>
               <tr>
                 <th>
-                  Projects
+                  Project
                 </th>
                 <th>
                   Status
                 </th>
                 <th>
-                  Endpoints
+                  Endpoint
                 </th>
                 <th>
-                  Request Methods
+                 Method
                 </th>
+                <th>
+                  Time
+                 </th>
               </tr>
             </thead>
             <tbody>
@@ -47,6 +50,9 @@
                 <td class="text-success"> 
                   {{data.request_method}}
                   <i class="mdi mdi-arrow-up"></i>
+                </td>
+                <td>
+                  {{data.time}}
                 </td>
               </tr>
             </tbody>
