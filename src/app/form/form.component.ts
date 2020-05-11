@@ -1,5 +1,4 @@
 import {  Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { EmpireService } from '../empire.service';
 import {RequestInput} from '../endpoints'
 @Component({
@@ -22,11 +21,6 @@ export class FormComponent implements OnInit {
     public requestMethods: any[] = [{ requestMethods: '' }];
 
     request: RequestInput
-
-
-userObservable: Observable<any>;
-
-
 
     constructor(private empireServie: EmpireService, ) {
         this.request={
