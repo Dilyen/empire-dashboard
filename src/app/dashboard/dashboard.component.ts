@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ViewEncapsulation} from '@angular/core';
 import {Status} from "../endpoints";
 import {EmpireService} from '../empire.service';
-import { Observable } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 
 
 @Component({
@@ -15,6 +15,7 @@ import { Observable } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
     retrieved_data : Status[] = [];
+    timer: Observable<number>;
 
     constructor(private appservice : EmpireService) {
 
@@ -22,9 +23,15 @@ export class DashboardComponent implements OnInit {
 
 
     ngOnInit() {
-        this.appservice.getStatus().subscribe(response => {
-            this.retrieved_data = response
-
-        })
+        if(!this.timer){
+            this.timer = timer(1000, 1000);
+            this.timer.subscribe(_ => {
+                this.appservice.getStatus().subscribe(response => {
+                    this.retrieved_data = response
+        
+                })
+            })
+        }
+       
     }
 }
