@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit() {
         if(!this.timer){
-            this.timer = timer(1000, 1000);
+            this.timer = timer(1000, 3000);
             this.timer.subscribe(_ => {
                 this.appservice.getStatus().subscribe(response => {
                     this.retrieved_data = response
