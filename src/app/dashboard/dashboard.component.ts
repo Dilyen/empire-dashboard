@@ -1,8 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, Input, EventEmitter, ChangeDetectorRef} from '@angular/core';
 import {ViewEncapsulation} from '@angular/core';
 import {Status} from "../endpoints";
 import {EmpireService} from '../empire.service';
-import { Observable, timer } from 'rxjs';
+import { Subscription, Observable, timer } from 'rxjs';
+import * as moment from 'moment';
+
 
 
 
@@ -17,23 +19,54 @@ import { Observable, timer } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
     retrieved_data : Status[] = [];
-    timer: Observable<number>;
 
-    constructor(private appservice : EmpireService) {
+    private subscription: Subscription;
+    @Output() TimerExpired: EventEmitter<any> = new EventEmitter<any>();
+
+    @Input() SearchDate: moment.Moment = moment();
+    @Input() ElapsTime: number = 3;
+
+    searchEndDate: moment.Moment;
+    remainingTime: number;
+    minutes: number;
+    seconds: number;
+
+    everySecond: Observable<number> = timer(0,1000);
+
+    
+
+    constructor(private appservice : EmpireService, private ref: ChangeDetectorRef) {
+        this.searchEndDate = this.SearchDate.add(this.ElapsTime, "minutes");
 
     }
 
 
     ngOnInit() {
-        if(!this.timer){
-            this.timer = timer(1000, 3000);
-            this.timer.subscribe(_ => {
                 this.appservice.getStatus().subscribe(response => {
                     this.retrieved_data = response
-        
                 })
-            })
+
+                this.subscription = this.everySecond.subscribe((seconds) => {
+                    var currentTime: moment.Moment = moment();
+                    this.remainingTime = this.searchEndDate.diff(currentTime)
+                    this.remainingTime = this.remainingTime / 1000;
+        
+                    if (this.remainingTime <= 0) {
+                        this.SearchDate = moment();
+                        this.searchEndDate = this.SearchDate.add(this.ElapsTime, "minutes");
+        
+                        this.TimerExpired.emit();
+                    }
+                    else {
+                        this.minutes = Math.floor(this.remainingTime / 60);
+                        this.seconds = Math.floor(this.remainingTime - this.minutes * 60);
+                    }
+                    this.ref.markForCheck()
+                })
+            }
+        
+            ngOnDestroy(): void {
+                this.subscription.unsubscribe();
+            }
         }
        
-    }
-}

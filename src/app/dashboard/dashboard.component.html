@@ -8,7 +8,7 @@
           </div>
           <div class="float-left">
             <div class="fluid-container">
-             <h6 class="font-weight-medium text-left mb-0">Projects</h6>
+             <h6 class="font-weight-medium text-left mb-0">Project</h6>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
       </div>
     </div>
   </div>
-  <div class="col-xl-2 col-lg-0 col-md-0 col-sm-0 grid-margin stretch-card">
+  <div class="col-xl-3 col-lg-0 col-md-0 col-sm-0 grid-margin stretch-card">
     <div class="card card-statistics">
       <div class="card-body">
         <div class="clearfix">
@@ -40,7 +40,7 @@
           </div>
           <div class="float-left">
             <div class="fluid-container">
-              <h6 class="font-weight-medium text-right mb-0">Endpoints</h6>
+              <h6 class="font-weight-medium text-right mb-0">Endpoint</h6>
             </div>
           </div>
         </div>
@@ -56,15 +56,14 @@
           </div>
           <div class="float-left">
             <div class="fluid-container">
-              <h6 class="font-weight-medium text-right mb-0">Request 
-               Method</h6>
+              <h6 class="font-weight-medium text-right mb-0">Method</h6>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-xl-2 col-lg-2 col-md-0 col-sm-3 grid-margin stretch-card">
+  <div class="col-xl-3 col-lg-2 col-md-0 col-sm-3 grid-margin stretch-card">
     <div class="card card-statistics">
       <div class="card-body">
         <div class="clearfix">
@@ -90,7 +89,7 @@
           <hr>
             <h4 class="card-title">Current Status</h4>
             <hr>
-            <div class="table-responsive" style="overflow-x: scroll;width:1100px" color="white">
+            <div class="table-responsive" style="overflow-x: scroll;overflow-y: scroll;width:1000px" color="white">
               <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -139,6 +138,11 @@
                     <td>
                         {{data.time}} 
                     </td>
+                    <div class="row" style="margin-bottom: 12px;">
+                      <div class="col-md-12" style="text-align: center;">
+                        This page will refresh in <div class="time">{{minutes}}</div> Min <div class="time">{{seconds}}</div> Sec
+                      </div>
+                    </div>
                   </tr>
                 </tbody>
               </table>
