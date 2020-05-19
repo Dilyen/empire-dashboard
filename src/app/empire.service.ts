@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 import { Observable } from 'rxjs'
-import { Turntabl_Project, Endpoints, Status,RequestInput } from './endpoints';
+import { Turntabl_Project, Endpoints, Status,RequestInput,} from './endpoints';
 
 @Injectable({providedIn: 'root'})
  export class EmpireService {
@@ -11,18 +11,21 @@ import { Turntabl_Project, Endpoints, Status,RequestInput } from './endpoints';
   turntablproject_url:string 
   addNewProject: string 
   addNewEndpoints: string
+  statusByCurrentDate: string
 
   constructor(private http: HttpClient, private cookieservice: CookieService) {
     this.statusUrl = this.cookieservice.get("statusUrl");
     this.turntablproject_url = this.cookieservice.get("turntablproject_url");
     this.addNewProject = this.cookieservice.get("addNewProject_url");
     this.addNewEndpoints = this.cookieservice.get("addNewEndpoint_url");
+    this.statusByCurrentDate = this.cookieservice.get("StatusByCurrentDate_url")
     
     this.http.get<any>(window.location.origin + '/').subscribe(res => {
       sessionStorage.setItem('turntablproject_url', res.turntablproject_url)
       sessionStorage.setItem('endpoints_url', res.endpoints_url)
       sessionStorage.setItem('addNewProject_url', res.addNewProject_url)
       sessionStorage.setItem('addNewEndpoint_url', res.addNewEndpoints_url)
+      sessionStorage.setItem('StatusByCurrentDate_url', res.statusByCurrent_url)
     })
   }
   getProjects(): Observable<Turntabl_Project[]> {
@@ -57,5 +60,8 @@ import { Turntabl_Project, Endpoints, Status,RequestInput } from './endpoints';
   
   addEndpoints(endpoint:Endpoints): Observable<Endpoints>{
     return this.http.post<Endpoints>(this.addNewEndpoints, endpoint);  
+  }
+  getStatusByCurrentDate(): Observable<Status[]>{
+    return this.http.get<Status[]>(this.statusUrl);  
   }
 }

@@ -13,6 +13,7 @@ import {EmpireService} from '../empire.service';
 })
 export class DashboardComponent implements OnInit {
     retrieved_data : Status[] = [];
+    retrieved_currentDate : Status[] = [];
  
     constructor(private appservice : EmpireService) {
 
@@ -21,6 +22,9 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
                 this.appservice.getStatus().subscribe(response => {
                     this.retrieved_data = response
+                })
+                this.appservice.getStatusByCurrentDate().subscribe(response => {
+                    this.retrieved_currentDate = response
                 })
         }  
     }
