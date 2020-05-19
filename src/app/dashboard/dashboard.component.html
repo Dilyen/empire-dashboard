@@ -89,9 +89,9 @@
           <hr>
             <h4 class="card-title">Current Status</h4>
             <hr>
-            <p align="right">
+            <!-- <p align="right">
               <button type="button" class="btn btn-primary mb-2" (click)="show = !show">{{show ? 'Today' : 'Yesterday'}}</button>
-            </p>
+            </p> -->
             <div class="table-responsive" style="overflow-x: scroll;overflow-y: scroll;width:1000px" color="white">
               <div *ngIf="show; else elseBlock">
               <table class="table table-bordered">
@@ -168,7 +168,7 @@
                     </tr>
                   </thead>
                    <tbody>
-                    <tr  *ngFor="let data of retrieved_currentDate | retrieved_previousDate">
+                    <tr  *ngFor="let data of retrieved_currentDate">
                       <td>
                         {{data.project_name}}
                       </td>
