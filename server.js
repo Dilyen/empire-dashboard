@@ -15,6 +15,7 @@ res.cookie("turntablproject_url", process.env.TURNTABLPROJECT_URL);
 res.cookie("addNewProject_url", process.env.ADDNEWPROJECT);
 res.cookie("addNewEndpoint_url", process.env.ADDNEWENDPOINT);
 res.cookie("statusByCurrentDate_url", process.env.STATUSBYCURRENTDATE_URL);
+res.cookie("statusByPreviousDate_url", process.env.STATUSBYPREVIOUSDATE_URL)
 });
 
 

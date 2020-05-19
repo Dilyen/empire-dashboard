@@ -12,20 +12,23 @@ import { Turntabl_Project, Endpoints, Status,RequestInput,} from './endpoints';
   addNewProject: string 
   addNewEndpoints: string
   statusByCurrentDate: string
+  statusByPreviousDate: string
 
   constructor(private http: HttpClient, private cookieservice: CookieService) {
     this.statusUrl = this.cookieservice.get("statusUrl");
     this.turntablproject_url = this.cookieservice.get("turntablproject_url");
     this.addNewProject = this.cookieservice.get("addNewProject_url");
     this.addNewEndpoints = this.cookieservice.get("addNewEndpoint_url");
-    this.statusByCurrentDate = this.cookieservice.get("StatusByCurrentDate_url")
+    this.statusByCurrentDate = this.cookieservice.get("statusByCurrentDate_url");
+    this.statusByPreviousDate = this.cookieservice.get("statusByPreviousDate_url");
     
     this.http.get<any>(window.location.origin + '/').subscribe(res => {
       sessionStorage.setItem('turntablproject_url', res.turntablproject_url)
       sessionStorage.setItem('endpoints_url', res.endpoints_url)
       sessionStorage.setItem('addNewProject_url', res.addNewProject_url)
       sessionStorage.setItem('addNewEndpoint_url', res.addNewEndpoints_url)
-      sessionStorage.setItem('StatusByCurrentDate_url', res.statusByCurrent_url)
+      sessionStorage.setItem('statusByCurrentDate_url', res.statusByCurrent_url)
+      sessionStorage.setItem('statusByPreviousDate_url', res.statusByPreviousDate)
     })
   }
   getProjects(): Observable<Turntabl_Project[]> {
@@ -62,6 +65,9 @@ import { Turntabl_Project, Endpoints, Status,RequestInput,} from './endpoints';
     return this.http.post<Endpoints>(this.addNewEndpoints, endpoint);  
   }
   getStatusByCurrentDate(): Observable<Status[]>{
+    return this.http.get<Status[]>(this.statusUrl);  
+  }
+  getStatusByPreviousDate(): Observable<Status[]>{
     return this.http.get<Status[]>(this.statusUrl);  
   }
 }
