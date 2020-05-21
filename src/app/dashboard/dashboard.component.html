@@ -91,7 +91,6 @@
             <hr>
             <p align="right">
               <button type="button" class="btn btn-primary mb-2" (click)="show = !show">{{show ? 'Today' : 'Yesterday'}}</button>
-              show = {{show}}
             </p>
             <div class="table-responsive" style="overflow-x: scroll;overflow-y: scroll;width:1000px" color="white">
               <div *ngIf="show; else elseBlock">
