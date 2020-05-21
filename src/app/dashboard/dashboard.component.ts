@@ -13,7 +13,7 @@ import {EmpireService} from '../empire.service';
 })
 export class DashboardComponent implements OnInit {
     retrieved_data : Status[] = [];
-    retrieved_currentDate : Status[] = [];
+    retrieved_currentDate: Status[] = [];
     // retrieved_previousDate : Status[] = [];
     
  
