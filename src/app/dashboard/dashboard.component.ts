@@ -14,7 +14,7 @@ import {EmpireService} from '../empire.service';
 export class DashboardComponent implements OnInit {
     retrieved_data : Status[] = [];
     retrieved_currentDate : Status[] = [];
-    retrieved_previousDate : Status[] = [];
+    // retrieved_previousDate : Status[] = [];
     
  
     constructor(private appservice : EmpireService) {
@@ -28,8 +28,8 @@ export class DashboardComponent implements OnInit {
                 this.appservice.getStatusByCurrentDate().subscribe(response => {
                     this.retrieved_currentDate = response
                 })
-                this.appservice.getStatusByPreviousDate().subscribe(response => {
-                    this.retrieved_previousDate = response
-                })
+                // this.appservice.getStatusByPreviousDate().subscribe(response => {
+                //     this.retrieved_previousDate = response
+                // })
         }  
     }
