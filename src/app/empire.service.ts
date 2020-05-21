@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
 import { Observable } from 'rxjs'
-import { Turntabl_Project, Endpoints, Status,RequestInput,} from './endpoints';
+import { Turntabl_Project, Endpoints, Status,RequestInput} from './endpoints';
 
 @Injectable({providedIn: 'root'})
  export class EmpireService {
@@ -28,7 +28,7 @@ import { Turntabl_Project, Endpoints, Status,RequestInput,} from './endpoints';
       sessionStorage.setItem('addNewProject_url', res.addNewProject_url)
       sessionStorage.setItem('addNewEndpoint_url', res.addNewEndpoints_url)
       sessionStorage.setItem('statusByCurrentDate_url', res.statusByCurrent_url)
-      sessionStorage.setItem('statusByPreviousDate_url', res.statusByPreviousDate)
+      sessionStorage.setItem('statusByPreviousDate_url', res.statusByPreviousDate_url)
     })
   }
   getProjects(): Observable<Turntabl_Project[]> {
@@ -65,9 +65,16 @@ import { Turntabl_Project, Endpoints, Status,RequestInput,} from './endpoints';
     return this.http.post<Endpoints>(this.addNewEndpoints, endpoint);  
   }
   getStatusByCurrentDate(): Observable<Status[]>{
-    return this.http.get<Status[]>(this.statusUrl);  
+    return this.http.get<Status[]>(this.statusByCurrentDate);  
   }
   getStatusByPreviousDate(): Observable<Status[]>{
-    return this.http.get<Status[]>(this.statusUrl);  
+    return this.http.get<Status[]>(this.statusByPreviousDate);  
   }
+  url = 'https://empire-ui.herokuapp.com/dashboard';
+  getCharacters() {
+    return this
+            .http
+            .get(`${this.url}/characters`);
+  }
+  
 }
