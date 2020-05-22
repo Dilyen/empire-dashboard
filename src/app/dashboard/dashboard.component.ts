@@ -25,12 +25,15 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
                 this.appservice.getStatus().subscribe(response => {
                     this.retrieved_data = response
-                })
+                });
                 this.appservice.getStatusByCurrentDate().subscribe(response => {
                     this.retrieved_currentDate = response
-                })
+                });
                  this.appservice.getStatusByPreviousDate().subscribe(response => {
                     this.retrieved_previousDate = response
-                })
+                });
+                this.appservice.sendGetRequest().subscribe((resposeBody) => {
+                    console.log(resposeBody);
+                });
+            }
         }  
-    }

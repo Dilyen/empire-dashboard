@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CookieService } from "ngx-cookie-service";
-import { Observable, from } from 'rxjs'
+import { Observable } from 'rxjs'
 import { Turntabl_Project, Endpoints, Status,RequestInput} from './endpoints';
 
 @Injectable({providedIn: 'root'})
@@ -14,7 +14,9 @@ import { Turntabl_Project, Endpoints, Status,RequestInput} from './endpoints';
   statusByCurrentDate: string
   statusByPreviousDate: string
 
-  constructor(private http: HttpClient, private cookieservice: CookieService) {
+  apiUrl = "/api/v1/status/";
+
+  constructor(private httpClient: HttpClient, private cookieservice: CookieService) {
     this.statusUrl = this.cookieservice.get("statusUrl");
     this.turntablproject_url = this.cookieservice.get("turntablproject_url");
     this.addNewProject = this.cookieservice.get("addNewProject_url");
@@ -22,7 +24,7 @@ import { Turntabl_Project, Endpoints, Status,RequestInput} from './endpoints';
     this.statusByCurrentDate = this.cookieservice.get("statusByCurrentDate_url");
     this.statusByPreviousDate = this.cookieservice.get("statusByPreviousDate_url");
     
-    this.http.get<any>(window.location.origin + '/').subscribe(res => {
+    this.httpClient.get<any>(window.location.origin + '/').subscribe(res => {
       sessionStorage.setItem('turntablproject_url', res.turntablproject_url)
       sessionStorage.setItem('endpoints_url', res.endpoints_url)
       sessionStorage.setItem('addNewProject_url', res.addNewProject_url)
@@ -33,48 +35,48 @@ import { Turntabl_Project, Endpoints, Status,RequestInput} from './endpoints';
   }
   getProjects(): Observable<Turntabl_Project[]> {
     // return this.http.get<Turntabl_Project[]>(sessionStorage.getItem('turntablproject_url'));
-    return this.http.get<Turntabl_Project[]>(this.turntablproject_url);
+    return this.httpClient.get<Turntabl_Project[]>(this.turntablproject_url);
   }
   
   getProjectById(id: number): Observable<Turntabl_Project>{
-    return this.http.get<Turntabl_Project>(this.turntablproject_url + id);
+    return this.httpClient.get<Turntabl_Project>(this.turntablproject_url + id);
   }
 
   getEndpoints(): Observable<Endpoints[]> {
-    return this.http.get<Endpoints[]>(sessionStorage.getItem('endpoints_url'));
+    return this.httpClient.get<Endpoints[]>(sessionStorage.getItem('endpoints_url'));
   }
   
   getEndpointById(id: number): Observable<Endpoints>{
-    return this.http.get<Endpoints>(sessionStorage.getItem('endpoints_url') + id);
+    return this.httpClient.get<Endpoints>(sessionStorage.getItem('endpoints_url') + id);
   }
 
   getStatus(): Observable<Status[]> {
   // return this.http.get<Status[]>(sessionStorage.getItem('status_url'));
-  return this.http.get<Status[]>(this.statusUrl);
+  return this.httpClient.get<Status[]>(this.statusUrl);
   }
 
   getStatusByProjectId(project_id: number): Observable<Status[]> {
-    return this.http.get<Status[]>(this.statusUrl + project_id);
+    return this.httpClient.get<Status[]>(this.statusUrl + project_id);
   }
 
   addProject(project:RequestInput): Observable<any>{
-    return this.http.post<RequestInput>(this.addNewProject, project);  
+    return this.httpClient.post<RequestInput>(this.addNewProject, project);  
   }
   
   addEndpoints(endpoint:Endpoints): Observable<Endpoints>{
-    return this.http.post<Endpoints>(this.addNewEndpoints, endpoint);  
+    return this.httpClient.post<Endpoints>(this.addNewEndpoints, endpoint);  
   }
   getStatusByCurrentDate(): Observable<Status[]>{
-    return this.http.get<Status[]>(this.statusByCurrentDate);  
+    return this.httpClient.get<Status[]>(this.statusByCurrentDate);  
   }
   getStatusByPreviousDate(): Observable<Status[]>{
-    return this.http.get<Status[]>(this.statusByPreviousDate);  
+    return this.httpClient.get<Status[]>(this.statusByPreviousDate);  
   }
-  url = 'https://empire-ui.herokuapp.com/dashboard';
-  getCharacters() {
-    return this
-            .http
-            .get(`${this.url}/characters`);
+  sendGetRequest() {
+    return this.httpClient.get(this.apiUrl);
+  }
+  sendPostRequest(data: Object): Observable<Object> {
+    return this.httpClient.post(this.apiUrl, data);
   }
   
 }

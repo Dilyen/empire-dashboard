@@ -40,7 +40,7 @@ export class FormComponent implements OnInit {
         this.requestMethods.push({requestMethods: ''});
     }
     addEndpoint() {
-        this.request.urls.push({endpoint_url: name})
+        this.request.urls.push({endpoint_url: name});
     }
 
     removeEndpoint(i : number) {
@@ -58,8 +58,8 @@ export class FormComponent implements OnInit {
                 url.request_method = request_method
                 this.empireServie.addEndpoints(url).subscribe(response => console.log(response))
     
-            })
-        })
+            });
+        });
         
     }
 
