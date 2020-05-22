@@ -20,7 +20,18 @@ export class DashboardComponent implements OnInit {
  
     constructor(private appservice : EmpireService) {
 
+
     }
+
+getData(){
+    this.appservice.getStatusByPreviousDate().subscribe(response => {
+        this.retrieved_previousDate = response
+    });
+
+   
+
+}
+
 
     ngOnInit() {
                 this.appservice.getStatus().subscribe(response => {
@@ -35,5 +46,7 @@ export class DashboardComponent implements OnInit {
                 this.appservice.sendGetRequest().subscribe((resposeBody) => {
                     console.log(resposeBody);
                 });
+                setInterval(() => {this.getData()}, 3000)
             }
+            
         }  

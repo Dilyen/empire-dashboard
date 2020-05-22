@@ -14,8 +14,7 @@ import { Turntabl_Project, Endpoints, Status,RequestInput} from './endpoints';
   statusByCurrentDate: string
   statusByPreviousDate: string
 
-  apiUrl = "/api/v1/status/";
-
+  
   constructor(private httpClient: HttpClient, private cookieservice: CookieService) {
     this.statusUrl = this.cookieservice.get("statusUrl");
     this.turntablproject_url = this.cookieservice.get("turntablproject_url");
@@ -73,10 +72,7 @@ import { Turntabl_Project, Endpoints, Status,RequestInput} from './endpoints';
     return this.httpClient.get<Status[]>(this.statusByPreviousDate);  
   }
   sendGetRequest() {
-    return this.httpClient.get(this.apiUrl);
-  }
-  sendPostRequest(data: Object): Observable<Object> {
-    return this.httpClient.post(this.apiUrl, data);
+    return this.httpClient.get(this.statusUrl);
   }
   
 }
