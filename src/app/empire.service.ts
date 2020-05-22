@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
 import { Turntabl_Project, Endpoints, Status } from './endpoints';
 
 @Injectable({providedIn: 'root'})
  export class EmpireService {
 
-    testUrl:string = 'http://localhost:8050/api/v1/status/'
-  turntablproject_url:string = 'http://localhost:8050/api/v1/projects'
+    testUrl = 'http://localhost:8050/api/v1/status/'
+  turntablproject_url = 'http://localhost:8050/api/v1/projects'
 
   constructor(private http: HttpClient) {
     this.http.get<any>(window.location.origin + '/').subscribe(res => {
