@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
                     this.retrieved_data = response
                 })
                 this.appservice.getStatusByCurrentDate().subscribe(response => {
-                    this.retrieved_currentDate; this.retrieved_previousDate = response
+                    this.retrieved_currentDate = response
                 })
                  this.appservice.getStatusByPreviousDate().subscribe(response => {
                     this.retrieved_previousDate = response
