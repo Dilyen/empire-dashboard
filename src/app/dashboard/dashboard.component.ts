@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ViewEncapsulation} from '@angular/core';
 import {Status} from "../endpoints";
 import {EmpireService} from '../empire.service';
@@ -11,10 +11,11 @@ import {EmpireService} from '../empire.service';
     ],
     encapsulation: ViewEncapsulation.None
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
     retrieved_data : Status[] = [];
     retrieved_currentDate : Status[] = [];
     retrieved_previousDate: Status[] = [];
+    refresher:any
     
     
  
@@ -22,13 +23,13 @@ export class DashboardComponent implements OnInit {
 
 
     }
+   
 
 getData(){
     this.appservice.getStatusByPreviousDate().subscribe(response => {
         this.retrieved_previousDate = response
     });
 
-    setInterval(() => {this.getData()}, 3000)
 
 }
 
@@ -40,6 +41,12 @@ getData(){
                 this.appservice.getStatusByCurrentDate().subscribe(response => {
                     this.retrieved_currentDate = response
                 });
+
+                this.refresher= setInterval(() => {
+                    this.getData()
+                    console.log("FUnction called")
+                }, 5000)
+
                  this.appservice.getStatusByPreviousDate().subscribe(response => {
                     this.retrieved_previousDate = response
                 });
@@ -48,5 +55,11 @@ getData(){
                 });
                
             }
-            
-        }  
+    
+    ngOnDestroy(): void {
+                clearInterval(this.refresher)
+    }
+                    
+        } 
+
+
