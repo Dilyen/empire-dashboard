@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
 getData(){
     this.appservice.getStatusByPreviousDate().subscribe(response => {
         this.retrieved_previousDate = response
+        setInterval(() => {this.getData()}, 3000)
     });
 
    
@@ -40,13 +41,13 @@ getData(){
                 this.appservice.getStatusByCurrentDate().subscribe(response => {
                     this.retrieved_currentDate = response
                 });
-                 this.appservice.getStatusByPreviousDate().subscribe(response => {
-                    this.retrieved_previousDate = response
-                });
+                //  this.appservice.getStatusByPreviousDate().subscribe(response => {
+                //     this.retrieved_previousDate = response
+                // });
                 this.appservice.sendGetRequest().subscribe((resposeBody) => {
                     console.log(resposeBody);
                 });
-                setInterval(() => {this.getData()}, 3000)
+               
             }
             
         }  
