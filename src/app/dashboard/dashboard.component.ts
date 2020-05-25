@@ -33,9 +33,9 @@ getData(){
 
 
     ngOnInit() {
-                // this.appservice.getStatus().subscribe(response => {
-                //     this.retrieved_data = response
-                // });
+                this.appservice.getStatus().subscribe(response => {
+                    this.retrieved_data = response
+                });
                 this.appservice.getStatusByCurrentDate().subscribe(response => {
                     this.retrieved_currentDate = response
                 });
