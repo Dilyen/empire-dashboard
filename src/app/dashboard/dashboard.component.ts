@@ -26,18 +26,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
    
 
 getData(){
-    this.appservice.getStatusByPreviousDate().subscribe(response => {
-        this.retrieved_previousDate = response
+    this.appservice.getStatus().subscribe(response => {
+        this.retrieved_data = response
     });
-
-
 }
 
 
     ngOnInit() {
-                this.appservice.getStatus().subscribe(response => {
-                    this.retrieved_data = response
-                });
+                // this.appservice.getStatus().subscribe(response => {
+                //     this.retrieved_data = response
+                // });
                 this.appservice.getStatusByCurrentDate().subscribe(response => {
                     this.retrieved_currentDate = response
                 });
@@ -45,8 +43,7 @@ getData(){
                 this.refresher= setInterval(() => {
                     this.getData()
                     console.log("FUnction called")
-                }, 5000)
-
+                }, 10000)
                  this.appservice.getStatusByPreviousDate().subscribe(response => {
                     this.retrieved_previousDate = response
                 });
