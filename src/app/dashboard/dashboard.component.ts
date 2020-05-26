@@ -17,20 +17,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
     retrieved_previousDate: Status[] = [];
     refresher:any
     
-    
- 
     constructor(private appservice : EmpireService) {
-
-
     }
    
-
 getData(){
     this.appservice.getStatus().subscribe(response => {
         this.retrieved_data = response
     });
 }
-
 
     ngOnInit() {
                 this.appservice.getStatus().subscribe(response => {
@@ -42,8 +36,8 @@ getData(){
 
                 this.refresher= setInterval(() => {
                     this.getData()
-                    console.log("FUnction called")
-                }, 10000)
+                    console.log("Function called")
+                }, 100000)
                  this.appservice.getStatusByPreviousDate().subscribe(response => {
                     this.retrieved_previousDate = response
                 });

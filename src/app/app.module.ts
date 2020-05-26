@@ -14,6 +14,7 @@ import { StatusComponent } from './status/status.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './form/form.component';
 import { ResponseComponent } from './response/response.component';
+import { EndpointComponent } from './endpoint/endpoint.component';
 
 
 
@@ -27,7 +28,8 @@ import { ResponseComponent } from './response/response.component';
         DashboardComponent,
         StatusComponent,
         FormComponent,
-        ResponseComponent
+        ResponseComponent,
+        EndpointComponent
 
 
     ],     

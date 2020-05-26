@@ -22,7 +22,7 @@ export class FormComponent implements OnInit {
 
     request: RequestInput
 
-    constructor(private empireServie: EmpireService, ) {
+    constructor(private empireServie: EmpireService ) {
         this.request={
             project_name: "",
             request_method:"",
@@ -56,7 +56,8 @@ export class FormComponent implements OnInit {
             this.request.urls.forEach(url => {
                 url.project_id = response.key
                 url.request_method = request_method
-                this.empireServie.addEndpoints(url).subscribe(response => console.log(response))
+                this.empireServie.addEndpoints(url).subscribe(response => 
+                    console.log(response))
     
             });
         });
