@@ -3,11 +3,11 @@
     <div class="card">
       <div class="card-body">
       <hr>
-        <h4 class="card-title">Current Status</h4>
+        <h4 class="card-title">Current Status</h4>        
         <hr>
-        <p align="right">
-        <button  type="button" class="btn btn-primary mr-2" routerLink="/endpoint" routerLinkActive="active">Add New Endpoints</button>
-        </p>
+        <p align="right" *ngFor= "let data of listed_data">
+        <button  type="button" class="btn btn-primary mr-2" (click)="onSelect(data)" [routerLink]="['/status',data.endpoint_id]"  routerLinkActive="active">Add New Endpoints</button>
+      </p>
         <div class="table-responsive" style="overflow-x: scroll;overflow-y: scroll;width:1000px" color="white">
           <table class="table table-bordered">
             <thead>
