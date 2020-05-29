@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpireService } from '../empire.service';
-import { Status, Endpoints } from '../endpoints';
+import { Status} from '../endpoints';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
