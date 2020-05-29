@@ -10,7 +10,7 @@
                 <div class="form-group">
                  <button type="button"  class="btn btn-primary mb-2" (click)="addEndpoint()">New Endpoints+ </button>
                   <div 
-                  *ngFor="let endpoint of request.urls
+                  *ngFor="let endpoint of endpoint.urls
                    let i = index;"  
                   >
                  <input 
@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <h5 for="exampleInputrequestMethod">Request Method</h5>
                     <select type="Request" class="form-control" id="exampleInputrequestMethod" placeholder="GET" name="requestMethod"
-                    [(ngModel)]="request.request_method"required>
+                    [(ngModel)]="endpoint.request_method"required>
                     <option value="GET">GET</option>
                     <option value="POST">POST</option>
                     <option value="PUT">PUT</option>
