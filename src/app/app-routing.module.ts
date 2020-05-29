@@ -12,11 +12,11 @@ import { SidebarComponent } from './sidebar/sidebar.component'
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'status/:endpoint_id', component: StatusComponent },
+  { path: 'status/:projectt_id', component: StatusComponent },
   { path: 'form', component: FormComponent },  
   { path: 'response', component: ResponseComponent}, 
   { path: 'sidebar', component: SidebarComponent},
-  { path: 'endpoint/:endpoint_id', component: EndpointComponent } 
+  { path: 'endpoint/', component: EndpointComponent } 
   
 ];
 

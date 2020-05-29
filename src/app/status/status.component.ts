@@ -35,9 +35,6 @@ endpoint_id: any
     this.appservice.getStatusByProjectId(project_id)
     .subscribe(response=>{
       this.retrieved_data = response
-      this.appservice.addEndpoints(this.endpoint_id).subscribe(response =>{
-        this.endpoint_id= response
-      });
       
       // console.log("Response oooooooo ",response);
       })
