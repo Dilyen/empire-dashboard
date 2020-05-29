@@ -16,7 +16,7 @@ export class EndpointComponent implements OnInit {
  retrieved_data: Status[] = []; 
  
  project_id:string;
- endpoint_id: any
+ 
  endpoint: AddInput
 
   constructor( private appservice: EmpireService, private route: ActivatedRoute) { 
@@ -34,20 +34,17 @@ export class EndpointComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       this.project_id = params.get("project_id")
-      this.endpoint_id= params.get("endpoint_id")
+    
     })
 
       this.load_project_status(this.project_id)
-      this.load_project_status(this.endpoint_id)
+  
   }
 
   load_project_status(project_id){
     this.appservice.getStatusByProjectId(project_id)
     .subscribe(response=>{
       this.retrieved_data = response
-      this.appservice.addEndpoints(this.endpoint_id).subscribe(response =>{
-        this.endpoint_id= response
-      });
       
       // console.log("Response oooooooo ",response);
       })
