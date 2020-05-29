@@ -26,7 +26,6 @@ export class EndpointComponent implements OnInit {
       urls:[],
       endpoint_url: ""
       
-      
   }
   }
 
