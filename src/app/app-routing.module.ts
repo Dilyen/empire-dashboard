@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'form', component: FormComponent },  
   { path: 'response', component: ResponseComponent}, 
   { path: 'sidebar', component: SidebarComponent},
-  { path: 'endpoint', component: EndpointComponent } 
+  { path: 'endpoint/:project_id', component: EndpointComponent } //any name
   
 ];
 

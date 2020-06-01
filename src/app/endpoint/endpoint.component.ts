@@ -67,7 +67,7 @@ logValue() {
   this.appservice.addEndpoints(this.endpoint).subscribe(response =>{
     this.endpoint.urls.forEach(url => {
       url.request_method = request_method
-      url.endpoint_id = response.endpoint_id
+      //url.endpoint_id = response.endpoint_id
       console.log(response)
     
     });
