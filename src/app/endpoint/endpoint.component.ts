@@ -15,7 +15,7 @@ export class EndpointComponent implements OnInit {
 
  retrieved_data: Status[] = []; 
  
- project_id:string;
+ //project_id:string;
  
  endpoint: AddInput
 
@@ -32,25 +32,25 @@ export class EndpointComponent implements OnInit {
   ngOnInit() {
 
 
-    this.route.paramMap.subscribe(params => {
-      this.project_id = params.get("project_id")
+    // this.route.paramMap.subscribe(params => {
+    //   this.project_id = params.get("project_id")
     
-    })
+    // })
 
-      this.load_project_status(this.project_id)
+    //   this.load_project_status(this.project_id)
   
   }
 
-  load_project_status(project_id){
-    this.appservice.getStatusByProjectId(project_id)
-    .subscribe(response=>{
-      this.retrieved_data = response
+  // load_project_status(project_id){
+  //   this.appservice.getStatusByProjectId(project_id)
+  //   .subscribe(response=>{
+  //     this.retrieved_data = response
       
-      // console.log("Response oooooooo ",response);
-      })
+  //     // console.log("Response oooooooo ",response);
+  //     })
 
     
-  }
+  // }
 
   addRequestMethod() {
     this.requestMethods.push({requestMethods: ''});
