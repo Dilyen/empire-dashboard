@@ -47,7 +47,7 @@ export class EndpointComponent implements OnInit {
     .subscribe(response=>{
       this.retrieved_data = response
       
-       console.log("Response oooooooo ",response);
+       //console.log("Response oooooooo ",response);
       })
 
     
@@ -67,7 +67,7 @@ logValue() {
 
   this.appservice.addEndpoints(this.endpoint).subscribe(response =>{
     this.endpoint.urls.forEach(url => {
-      url.project_id = response.project_id
+      url.endpoint_id = response.endpoint_id
       url.request_method = request_method
       console.log(response)
     
