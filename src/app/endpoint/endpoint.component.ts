@@ -22,10 +22,11 @@ export class EndpointComponent implements OnInit {
   constructor( private appservice: EmpireService, private route: ActivatedRoute) { 
 
     this.endpoint={
+      project_name: "",
       request_method:"",
       urls:[],
-      endpoint_url: "",
-      project_id: string
+      endpoint_url: ""
+    
       
   }
   }
@@ -65,15 +66,25 @@ logValue() {
   console.log(this.endpoint)
   let request_method=this.endpoint.request_method
 
-  this.appservice.addEndpoints(this.endpoint).subscribe(response =>{
+  this.appservice.addProject(this.endpoint).subscribe(response  => {
     this.endpoint.urls.forEach(url => {
-      url.request_method = request_method
-      url.endpoint_id = response.endpoint_id
-      console.log(response)
-    
-    });
+        url.project_id = response.key
+        url.request_method = request_method
+        this.appservice.addEndpoints(url).subscribe(response => 
+            console.log(response))
 
-  });
+    });
+})
+
+  // this.appservice.addEndpoints(this.endpoint).subscribe(response =>{
+  //   this.endpoint.urls.forEach(url => {
+  //     url.project_id = response.key
+  //     url.request_method = request_method
+  //     console.log(response)
+    
+  //   });
+
+  // });
     
 }
 
