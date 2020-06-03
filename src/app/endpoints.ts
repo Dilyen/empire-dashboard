@@ -32,8 +32,8 @@ export class RequestInput {
 export class AddInput{
     request_method:string
     urls: Endpoints[]
-    endpoint_id?: number
     endpoint_url: string
+    project_id?: number
     
 
 
