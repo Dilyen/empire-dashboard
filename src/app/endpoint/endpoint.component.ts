@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddInput, Status} from '../endpoints';
 import { EmpireService } from '../empire.service';
 import { ActivatedRoute } from '@angular/router';
+import { url } from 'inspector';
 
 @Component({
   selector: 'app-endpoint',
@@ -15,7 +16,7 @@ export class EndpointComponent implements OnInit {
 
  retrieved_data: Status[] = []; 
  
- project_id:string;
+ project_id: number;
  
  endpoint: AddInput
 
@@ -34,7 +35,7 @@ export class EndpointComponent implements OnInit {
 
 
     this.route.paramMap.subscribe(params => {
-      this.project_id = params.get("project_id")
+      this.project_id = Number(params.get("project_id"))
     
     })
 
@@ -65,15 +66,23 @@ logValue() {
   console.log(this.endpoint)
   let request_method=this.endpoint.request_method
 
-  this.appservice.addEndpoints(this.endpoint).subscribe(response =>{
-    this.endpoint.urls.forEach(url => {
-      url.endpoint_url= response.endpoint_url
-      url.request_method = request_method
-      console.log(response)
+  // this.appservice.addEndpoints(this.endpoint).subscribe(response =>{
+  //   this.endpoint.urls.forEach(url => {
+  //     url.endpoint_url= response.endpoint_url
+  //     url.request_method = request_method
+  //     console.log(response)
     
-    });
+  //   });
 
-  });
+  // });
+
+  this.endpoint.urls.forEach(url => {
+    url.project_id = this.project_id
+    url.request_method = this.endpoint.request_method
+    this.appservice.addEndpoints(url).subscribe(response => 
+      console.log(response))
+
+});
     
 }
 
