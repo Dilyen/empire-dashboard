@@ -58,7 +58,6 @@ export class FormComponent implements OnInit {
                 url.request_method = request_method
                 this.empireServie.addEndpoints(url).subscribe(response => 
                     console.log(response))
-    
             });
         });
         

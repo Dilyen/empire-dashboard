@@ -7,8 +7,6 @@ import { ResponseComponent } from './response/response.component';
 import { EndpointComponent } from './endpoint/endpoint.component';
 import { SidebarComponent } from './sidebar/sidebar.component'
 
-
-
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
@@ -16,7 +14,7 @@ const routes: Routes = [
   { path: 'form', component: FormComponent },  
   { path: 'response', component: ResponseComponent}, 
   { path: 'sidebar', component: SidebarComponent},
-  { path: 'endpoint/:project_id', component: EndpointComponent } //any name
+  { path: 'endpoint/:project_id', component: EndpointComponent }
   
 ];
 
