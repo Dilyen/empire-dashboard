@@ -33,7 +33,7 @@ import { Turntabl_Project, Endpoints, Status,RequestInput} from './endpoints';
     })
   }
   getProjects(): Observable<Turntabl_Project[]> {
-    // return this.http.get<Turntabl_Project[]>(sessionStorage.getItem('turntablproject_url'));
+    //return this.http.get<Turntabl_Project[]>(sessionStorage.getItem('turntablproject_url'));
     return this.httpClient.get<Turntabl_Project[]>(this.turntablproject_url);
   }
   
@@ -50,7 +50,7 @@ import { Turntabl_Project, Endpoints, Status,RequestInput} from './endpoints';
   }
 
   getStatus(): Observable<Status[]> {
-  // return this.http.get<Status[]>(sessionStorage.getItem('status_url'));
+  //return this.http.get<Status[]>(sessionStorage.getItem('status_url'));
   return this.httpClient.get<Status[]>(this.statusUrl);
   }
 
