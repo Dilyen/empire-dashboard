@@ -10,17 +10,18 @@ import {EmpireService} from '../empire.service';
         '../app.component.scss', './dashboard.component.scss'
     ],
     encapsulation: ViewEncapsulation.None
+
 })
-// export class NgIfElse {
-//     show: boolean = true;
-//   }
+
+  
+
 
 export class DashboardComponent implements OnInit, OnDestroy {
     retrieved_data : Status[] = [];
     retrieved_currentDate : Status[] = [];
     retrieved_previousDate: Status[] = [];
     refresher:any
-    
+    show: boolean = true;
     constructor(private appservice : EmpireService) {
     }
    
