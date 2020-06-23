@@ -13,9 +13,6 @@ import {EmpireService} from '../empire.service';
 
 })
 
-  
-
-
 export class DashboardComponent implements OnInit, OnDestroy {
     retrieved_data : Status[] = [];
     retrieved_currentDate : Status[] = [];
