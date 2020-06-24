@@ -14,7 +14,7 @@ export class StatusComponent implements OnInit, OnDestroy {
 
 project_id:number;
 refresher: any;
-
+show: boolean = true;
   constructor(private appservice: EmpireService, private route: ActivatedRoute) { }
 
   getData(){
