@@ -22,11 +22,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
     constructor(private appservice : EmpireService) {
     }
    
-   getData(){
+getData(){
     this.appservice.getStatus().subscribe(response => {
         this.retrieved_data = response
-        this.retrieved_currentDate = response
-        this.retrieved_previousDate = response
     });
 }
 
@@ -55,4 +53,4 @@ export class DashboardComponent implements OnInit, OnDestroy {
                 clearInterval(this.refresher)
     }
                     
-        } 
+        }
