@@ -14,7 +14,7 @@ export class StatusComponent implements OnInit, OnDestroy {
 
 project_id:number;
 refresher: any;
-//show: boolean = true;
+show: boolean = true;
   constructor(private appservice: EmpireService, private route: ActivatedRoute) { }
 
   getData(){
@@ -27,10 +27,7 @@ refresher: any;
         })
   }
 
-
   ngOnInit() {
-   
-  
     this.route.paramMap.subscribe(params => {
       this.project_id = Number(params.get("project_id"))
     })

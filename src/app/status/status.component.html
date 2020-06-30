@@ -1,67 +1,123 @@
 <div class="row">
   <div class="col-lg-100 grid-margin">
-    <div class="card">
-      <div class="card-body">
-      <hr>
-        <h4 class="card-title">Current Status</h4>
-        <hr>
-        <p align="left">
-          <button  type="button" class="btn btn-primary mr-2" [routerLink]="['/endpoint',project_id]" routerLinkActive="active">Add New Endpoints</button>
-          </p>
-        <div class="table-responsive" style="overflow-x: scroll;overflow-y: scroll;width:1000px" color="white">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>
-                  Project
-                </th>
-                <th>
-                  Status
-                </th>
-                <th>
-                  Endpoint
-                </th>
-                <th>
-                 Method
-                </th>
-                <th>
-                  Time
-                 </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr  *ngFor="let data of retrieved_data">
-                <td>
-                  {{data.project_name}}
-                </td>
-                <td>
-                <div *ngIf=" data.status === 200; then thenBlock else elseBlock "></div>
-                <ng-template #thenBlock>
-                 <div class="radio-item">
-                  <label for="radio1"></label>
-                </div>
-                </ng-template>
-                <ng-template #elseBlock>
-                <div class="radio-item-red">
-                  <label for="radio1"></label>
-                </div>
-                </ng-template>
-                </td>
-                <td>
-                  {{data.endpoint_url}}
-                </td>
-                <td class="text-success"> 
-                  {{data.request_method}}
-                  <i class="mdi mdi-arrow-up"></i>
-                </td>
-                <td>
-                  {{data.time}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  <div class="card">
+  <div class="card-body">
+  <hr>
+  <h4 class="card-title">Current Status</h4>
+  <hr>
+  <p align="left">
+  <button type="button" class="btn btn-primary mr-2" [routerLink]="['/endpoint',project_id]" routerLinkActive="active">Add New Endpoints</button>
+  <button type="button" class="btn btn-primary mb-2" (click)="show = !show">{{show ? 'Today' : 'Yesterday'}}</button>
+  </p>
+  <div class="table-responsive" style="overflow-x: scroll;overflow-y: scroll;width:1000px" color="white">
+  <div *ngIf="show; else elseBlock">
+  <table class="table table-bordered">
+  <thead>
+  <tr>
+  <th>
+  Project
+  </th>
+  <th>
+  Status
+  </th>
+  <th>
+  Endpoint
+  </th>
+  <th>
+  Method
+  </th>
+  <th>
+  Time
+  </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of retrieved_data">
+  <td>
+  {{data.project_name}}
+  </td>
+  <td>
+  <div *ngIf=" data.status === 200; then thenBlock else elseBlock "></div>
+  <ng-template #thenBlock>
+  <div class="radio-item">
+  <label for="radio1"></label>
   </div>
-</div>
+  </ng-template>
+  <ng-template #elseBlock>
+  <div class="radio-item-red">
+  <label for="radio1"></label>
+  </div>
+  </ng-template>
+  </td>
+  <td>
+  {{data.endpoint_url}}
+  </td>
+  <td class="text-success"> 
+  {{data.request_method}}
+  </td>
+  <td>
+  {{data.time}} 
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  
+  <ng-template #elseBlock>
+  <table class="table table-bordered">
+  <thead>
+  <tr>
+  <th>
+  Project
+  </th>
+  <th>
+  Status
+  </th>
+  <th>
+  Endpoint
+  </th>
+  <th>
+  Method
+  </th>
+  <th>
+  Time
+  </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let data of retrieved_data">
+  <td>
+  {{data.project_name}}
+  </td>
+  <td>
+  <div *ngIf=" data.status === 200; then thenBlock else elseBlock "></div>
+  <ng-template #thenBlock>
+  <div class="radio-item">
+  <label for="radio1"></label>
+  </div>
+  </ng-template>
+  <ng-template #elseBlock>
+  <div class="radio-item-red">
+  <label for="radio1"></label>
+  </div>
+  </ng-template>
+  </td>
+  <td>
+  {{data.endpoint_url}}
+  </td>
+  <td class="text-success"> 
+  {{data.request_method}}
+  </td>
+  <td>
+  {{data.time}} 
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  
+  </ng-template>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>

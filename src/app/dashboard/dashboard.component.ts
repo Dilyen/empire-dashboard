@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     constructor(private appservice : EmpireService) {
     }
    
-getData(){
+   getData(){
     this.appservice.getStatus().subscribe(response => {
         this.retrieved_data = response
     });
@@ -54,5 +54,3 @@ getData(){
     }
                     
         } 
-
-

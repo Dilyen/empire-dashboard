@@ -15,7 +15,6 @@ const routes: Routes = [
   { path: 'response', component: ResponseComponent}, 
   { path: 'sidebar', component: SidebarComponent},
   { path: 'endpoint/:project_id', component: EndpointComponent }
-  
 ];
 
 @NgModule({
