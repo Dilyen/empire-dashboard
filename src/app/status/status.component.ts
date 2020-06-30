@@ -22,6 +22,8 @@ show: boolean = true;
   getData(){
     this.load_project_status(this.project_id)
       this.appservice.getStatusByProjectId(this.project_id)
+      this.appservice.getStatusByCurrentDate()
+      this.appservice.getStatusByPreviousDate()
       .subscribe(response=>{
         this.retrieved_data = response
         
@@ -45,6 +47,8 @@ show: boolean = true;
 
   load_project_status(project_id){
     this.appservice.getStatusByProjectId(project_id)
+    this.appservice.getStatusByCurrentDate()
+    this.appservice.getStatusByPreviousDate()
     .subscribe(response=>{
       this.retrieved_data = response
       
@@ -56,9 +60,9 @@ show: boolean = true;
     this.appservice.getStatusByCurrentDate().subscribe(response => {
       this.retrieved_currentDate = response
   });
-    this.appservice.sendGetRequest().subscribe((resposeBody) => {
-      console.log(resposeBody);
-  });
+  //   this.appservice.sendGetRequest().subscribe((resposeBody) => {
+  //     console.log(resposeBody);
+  // });
 
   }
 
