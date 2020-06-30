@@ -25,6 +25,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
    getData(){
     this.appservice.getStatus().subscribe(response => {
         this.retrieved_data = response
+        this.retrieved_currentDate = response
+        this.retrieved_previousDate = response
     });
 }
 

@@ -11,19 +11,14 @@ import { ActivatedRoute } from '@angular/router';
 
 export class StatusComponent implements OnInit, OnDestroy {
   retrieved_data: Status[] = []; 
-  retrieved_currentDate : Status[] = [];
-  retrieved_previousDate: Status[] = [];
 
 project_id:number;
 refresher: any;
-show: boolean = true;
   constructor(private appservice: EmpireService, private route: ActivatedRoute) { }
 
   getData(){
     this.load_project_status(this.project_id)
       this.appservice.getStatusByProjectId(this.project_id)
-      this.appservice.getStatusByCurrentDate()
-      this.appservice.getStatusByPreviousDate()
       .subscribe(response=>{
         this.retrieved_data = response
         
@@ -41,28 +36,17 @@ show: boolean = true;
       this.refresher= setInterval(() => {
         this.getData()
         console.log("Get oooooo")
-    }, 10000)
+    }, 10000) 
 
   }
 
   load_project_status(project_id){
     this.appservice.getStatusByProjectId(project_id)
-    this.appservice.getStatusByCurrentDate()
-    this.appservice.getStatusByPreviousDate()
     .subscribe(response=>{
       this.retrieved_data = response
       
       // console.log("Response oooooooo ",response);
       })
-      this.appservice.getStatusByPreviousDate().subscribe(response => {
-        this.retrieved_previousDate = response
-    });
-    this.appservice.getStatusByCurrentDate().subscribe(response => {
-      this.retrieved_currentDate = response
-  });
-  //   this.appservice.sendGetRequest().subscribe((resposeBody) => {
-  //     console.log(resposeBody);
-  // });
 
   }
 
