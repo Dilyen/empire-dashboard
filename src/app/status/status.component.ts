@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 
 export class StatusComponent implements OnInit, OnDestroy {
   retrieved_data: Status[] = []; 
+  retrieved_currentDate : Status[] = [];
+  retrieved_previousDate: Status[] = [];
 
 project_id:number;
 refresher: any;
@@ -37,7 +39,7 @@ show: boolean = true;
       this.refresher= setInterval(() => {
         this.getData()
         console.log("Get oooooo")
-    }, 10000) 
+    }, 10000)
 
   }
 
@@ -48,6 +50,15 @@ show: boolean = true;
       
       // console.log("Response oooooooo ",response);
       })
+      this.appservice.getStatusByPreviousDate().subscribe(response => {
+        this.retrieved_previousDate = response
+    });
+    this.appservice.getStatusByCurrentDate().subscribe(response => {
+      this.retrieved_currentDate = response
+  });
+    this.appservice.sendGetRequest().subscribe((resposeBody) => {
+      console.log(resposeBody);
+  });
 
   }
 
