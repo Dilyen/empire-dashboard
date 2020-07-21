@@ -1,23 +1,34 @@
-
 import {  Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
+import { EmpireService } from '../empire.service';
+import {RequestInput} from '../endpoints'
 @Component({
-    template: '',
     selector: 'app-form',
     templateUrl: './form.component.html',
     styleUrls: [
         './form.component.scss'
-    ]
-}) export class FormComponent implements OnInit {
+    ],
+    
+})
+
+export class FormComponent implements OnInit {
 
     public projects: any[] = [{ project: '' }];
 
-    public endpoints: any[] = [{ endpoints: '' }];
+    public endpoints: any[] = [{ 
+        endpoints: '' 
+    }];
 
     public requestMethods: any[] = [{ requestMethods: '' }];
 
-    constructor() {}
+    request: RequestInput
+    constructor(private empireServie: EmpireService ) {
+
+        this.request={
+            project_name: "",
+            request_method:"",
+            urls:[]
+        }
+    }
 
     ngOnInit() {}
 
@@ -29,21 +40,27 @@ import { NgForm } from '@angular/forms';
         this.requestMethods.push({requestMethods: ''});
     }
     addEndpoint() {
-        this.endpoints.push({endpoints: ''});
+        this.request.urls.push({endpoint_url: name});
     }
 
     removeEndpoint(i : number) {
-        this.endpoints.splice(i, 1);
+        this.endpoints.splice(i);
     }
 
-    logValue(form : NgForm) {
+    logValue() {
 
-        console.log(form);
-        console.log(form.value);
-        form.reset(form);
-        // console.log(value.projectName)
-        // console.log(this.projects);
-        // console.log(this.endpoints);
+        console.log(this.request)
+        let request_method=this.request.request_method
+
+        this.empireServie.addProject(this.request).subscribe(response  => {
+            this.request.urls.forEach(url => {
+                url.project_id = response.key
+                url.request_method = request_method
+                this.empireServie.addEndpoints(url).subscribe(response => 
+                    console.log(response))
+            });
+        });
+        
     }
 
 }

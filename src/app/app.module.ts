@@ -13,7 +13,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { StatusComponent } from './status/status.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './form/form.component';
-
+import { ResponseComponent } from './response/response.component';
+import { EndpointComponent } from './endpoint/endpoint.component';
 
 @NgModule({
     declarations: [
@@ -23,8 +24,9 @@ import { FormComponent } from './form/form.component';
         FooterComponent,
         DashboardComponent,
         StatusComponent,
-        FormComponent
-
+        FormComponent,
+        ResponseComponent,
+        EndpointComponent,
 
     ],     
     imports: [
@@ -36,7 +38,6 @@ import { FormComponent } from './form/form.component';
         HttpClientModule,
         NgbModule
     ],
-
 
     providers: [],
     bootstrap: [AppComponent],

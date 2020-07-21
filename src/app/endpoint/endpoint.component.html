@@ -1,0 +1,43 @@
+<div class="row"> 
+    <div class="col-md-6 d-flex align-items-stretch grid-margin">
+      <div class="row flex-grow">
+        <div class="col-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+            <hr>
+            <h3 class="card-title">Endpoints Entry</h3>
+            <hr>
+                <div class="form-group">
+                 <button type="button" class="btn btn-primary mb-2" (click)="addEndpoint()">New Endpoints+ </button>
+                  <div 
+                  *ngFor="let endpoint of endpoint.urls
+                   let i = index;"  
+                  >
+                 <input 
+                   [(ngModel)]="endpoint.endpoint_url" 
+                   name="endpoint_{{i}}" 
+                   style="margin-top: 10px;" 
+                   type="endpoints" 
+                   class="form-control" 
+                   id="exampleInputEndpoint" 
+                   placeholder="Enter Endpoint_url"
+                   required>
+                  </div>
+                  <br>
+                </div>
+                <div class="form-group">
+                    <h5 for="exampleInputrequestMethod">Request Method</h5>
+                    <select type="Request" class="form-control" id="exampleInputrequestMethod" placeholder="GET" name="requestMethod"
+                    [(ngModel)]="endpoint.request_method"required>
+                    <option value="GET">GET</option>
+                    <option value="POST">POST</option>
+                    <option value="PUT">PUT</option>
+                    <option value="DELETE">DELETE</option>
+                    <option value="PATCH">PATCH</option>
+                    </select>
+                    </div>
+                <button  type="button" class="btn btn-danger mr-2" routerLink="/dashboard" routerLinkActive="active">Back</button>
+                <button type="submit" class="btn btn-success mr-2" value="Submit" (click)="logValue()"  routerLink="/dashboard" routerLinkActive="active">Submit</button>
+            </div>
+          </div>
+        </div>

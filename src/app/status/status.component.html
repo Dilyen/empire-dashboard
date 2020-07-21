@@ -5,22 +5,28 @@
       <hr>
         <h4 class="card-title">Current Status</h4>
         <hr>
-        <div class="table-responsive">
+        <p align="left">
+          <button  type="button" class="btn btn-primary mr-2" [routerLink]="['/endpoint',project_id]" routerLinkActive="active">Add New Endpoints</button>
+          </p>
+        <div class="table-responsive" style="overflow-x: scroll;overflow-y: scroll;width:1000px" color="white">
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th>
-                  Projects
+                  Project
                 </th>
                 <th>
                   Status
                 </th>
                 <th>
-                  Endpoints
+                  Endpoint
                 </th>
                 <th>
-                  Request Methods
+                 Method
                 </th>
+                <th>
+                  Time
+                 </th>
               </tr>
             </thead>
             <tbody>
@@ -47,6 +53,9 @@
                 <td class="text-success"> 
                   {{data.request_method}}
                   <i class="mdi mdi-arrow-up"></i>
+                </td>
+                <td>
+                  {{data.time}}
                 </td>
               </tr>
             </tbody>

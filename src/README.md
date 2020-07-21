@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 # StarAdmin Free Angular Admin Template
 
 
@@ -8,6 +10,7 @@ This remarkably flexible and highly customizable template helps you create an am
 
 ## Demo
 
+>>>>>>> master
 ## Installation
 
 ### What's included

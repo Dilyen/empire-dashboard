@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng server.js",
-    "build": "ng build --prod"
+    "start": "node server.js",
+    "heroku-postbuild": "ng build"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "ng-bootstrap": "^1.6.3",
+    "ngx-cookie-service": "^3.0.4",
     "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.5.4",
@@ -45,7 +46,7 @@
     "typescript": "~3.4.5"
   },
   "engines": {
-    "node": "12.14.1",
-    "npm": "6.13.4"
+    "node": "10.15.2",
+    "npm": "5.8.0"
   }
 }
