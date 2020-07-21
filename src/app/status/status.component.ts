@@ -21,8 +21,6 @@ refresher: any;
       this.appservice.getStatusByProjectId(this.project_id)
       .subscribe(response=>{
         this.retrieved_data = response
-        
-        // console.log("Response oooooooo ",response);
         })
   }
 
@@ -44,8 +42,6 @@ refresher: any;
     this.appservice.getStatusByProjectId(project_id)
     .subscribe(response=>{
       this.retrieved_data = response
-      
-      // console.log("Response oooooooo ",response);
       })
 
   }

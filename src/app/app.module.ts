@@ -39,7 +39,6 @@ import { EndpointComponent } from './endpoint/endpoint.component';
         NgbModule
     ],
 
-
     providers: [],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -34,7 +34,4 @@ export class AddInput{
     urls: Endpoints[]
     endpoint_url: string
     project_id?: number
-    
-
-
 }
