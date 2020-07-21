@@ -14,7 +14,6 @@ import { Turntabl_Project, Endpoints, Status,RequestInput} from './endpoints';
   statusByCurrentDate: string
   statusByPreviousDate: string
 
-  
   constructor(private httpClient: HttpClient, private cookieservice: CookieService) {
     this.statusUrl = this.cookieservice.get("statusUrl");
     this.turntablproject_url = this.cookieservice.get("turntablproject_url");

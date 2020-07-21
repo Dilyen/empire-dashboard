@@ -5,8 +5,14 @@
           <div class="card">
             <div class="card-body">
             <hr>
+<<<<<<< HEAD
             <h3 class="card-title">Entry</h3>
             <hr>
+=======
+            <h3 class="card-title">Entry Form</h3>
+            <hr>
+              <form class="forms-sample" (ngSubmit)="logValue(f)" #f="ngForm">
+>>>>>>> master
                 <div class="form-group" >
                   <h5 for="exampleInputProjectName">Project Name</h5>
                   <input type="Project" 
@@ -14,11 +20,16 @@
                   id="exampleInputProjectName" 
                   placeholder="Enter Project Name"
                   name="projectName"
+<<<<<<< HEAD
                   [(ngModel)]="request.project_name"             
+=======
+                  ngModel             
+>>>>>>> master
                   required>
                 </div>
                 <div class="form-group">
                   <h5 for="exampleInputrequestMethod">Request Method</h5>
+<<<<<<< HEAD
                   <select type="Request" class="form-control" id="exampleInputrequestMethod" placeholder="GET" name="requestMethod"
                   [(ngModel)]="request.request_method"required>
                   <option value="GET">GET</option>
@@ -36,6 +47,22 @@
                   >
                  <input 
                    [(ngModel)]="endpoint.endpoint_url" 
+=======
+                    <input type="Request"
+                    class="form-control" 
+                    id="exampleInputrequestMethod"
+                    placeholder="Enter Request Method" 
+                    name="requestMethod"
+                    ngModel
+                     required>
+                  </div>
+                <div class="form-group">
+                 <button type="button" class="btn btn-primary mb-2" (click)="addEndpoint()">New Endpoints+ </button>
+                  <input 
+                  *ngFor="let endpoint of endpoints
+                   let i = index;"  
+                   [(ngModel)]="endpoint.endpoint" 
+>>>>>>> master
                    name="endpoint_{{i}}" 
                    style="margin-top: 10px;" 
                    type="endpoints" 
@@ -43,6 +70,7 @@
                    id="exampleInputEndpoint" 
                    placeholder="Enter Endpoint_url"
                    required>
+<<<<<<< HEAD
                   </div>
                   <br>
                    <!-- <div class="col-11 text-right">
@@ -51,6 +79,16 @@
                 </div>
                 <button  type="button" class="btn btn-danger mr-2" routerLink="/dashboard" routerLinkActive="active">Back</button>
                 <button type="submit" class="btn btn-success mr-2" value="Submit" (click)="logValue()"  routerLink="/response" routerLinkActive="active">Submit</button>
+=======
+                  <br>
+                </div>
+                <div class="col-11 text-right">
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeEndpoint(i)"> Endpoint X</button>
+            </div>
+                <button  type="submit" class="btn btn-danger mr-2" routerLink="/dashboard" routerLinkActive="active">Back</button>
+                <button type="submit" class="btn btn-success mr-2" value="Submit" [disabled]="!f.valid" >Submit</button>
+              </form>
+>>>>>>> master
             </div>
           </div>
         </div>

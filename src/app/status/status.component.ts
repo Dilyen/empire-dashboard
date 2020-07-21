@@ -4,9 +4,9 @@ import { Status } from '../endpoints';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-status',
-  templateUrl: './status.component.html',
-  styleUrls: ['./status.component.scss']
+    selector: 'app-status', 
+    templateUrl: './status.component.html',
+    styleUrls: ['./status.component.scss']
 })
 
 export class StatusComponent implements OnInit, OnDestroy {
